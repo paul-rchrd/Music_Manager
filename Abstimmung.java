@@ -1,7 +1,7 @@
 import java.util.*;
 public class Abstimmung {
 
-    private String beziehung;
+    private String bezeichnung;
     private int abstimmdauer;
     private int spieldauer;
     private Date startzeit;
@@ -10,7 +10,7 @@ public class Abstimmung {
     public Abstimmung(String bez, int ad, int sd){
         this.spieldauer = sd;
         this.abstimmdauer = ad;
-        this.beziehung = bez;
+        this.bezeichnung = bez;
 
     }
 
@@ -26,16 +26,33 @@ public class Abstimmung {
 
     public Playlist generierePlaylist(){
         Playlist p1;
-        p1 = new Playlist();
-        return ;
+        p1 = new Playlist(bezeichnung);
+        return p1;
     }
 
     public boolean istAktiv(){
         return true;
     }
 
-    public String getBeziehung() {
-        return beziehung;
+    private void sortiereSongs(){
+   //BubbleSort optimiert
+    boolean getauscht;
+    int unsortiert = songs.size() - 1;
+
+      do{
+        getauscht = false;
+        for(int i = 0; i < unsortiert; i++){
+            if(songs.get(i).getAnzahlStimmen().compareTo(songs.get(i+1).getAnzahlStimmen()) > 0){
+              songs.remove(i+1);
+              songs.add(i, songs.get(i+1));
+              getauscht = true;
+            }
+        }
+        unsortiert--;
+      }while(getauscht);
+  }
+    public String getBezeichnung() {
+        return bezeichnung;
     }
 
     public int getAbstimmdauer() {
