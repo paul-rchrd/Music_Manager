@@ -35,14 +35,14 @@ public class Abstimmung {
     }
 
     private void sortiereSongs(){
-   //BubbleSort optimiert
+   //BubbleSort optimiert. Sortiert songs ArrayList nach Anzahl der Stimmen
     boolean getauscht;
     int unsortiert = songs.size() - 1;
 
       do{
         getauscht = false;
         for(int i = 0; i < unsortiert; i++){
-            if(songs.get(i).getAnzahlStimmen().compareTo(songs.get(i+1).getAnzahlStimmen()) > 0){
+            if(songs.get(i).getAnzahlStimmen() > songs.get(i+1).getAnzahlStimmen()){ //kein Plan was da falsch ist
               songs.remove(i+1);
               songs.add(i, songs.get(i+1));
               getauscht = true;
