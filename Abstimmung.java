@@ -48,7 +48,7 @@ public class Abstimmung {
       do{
         getauscht = false;
         for(int i = 0; i < unsortiert; i++){
-            if(songs.get(i).getAnzahlStimmen() > songs.get(i+1).getAnzahlStimmen()){ //kein Plan was da falsch ist
+            if(songs.get(i).getAnzahlStimmen() > songs.get(i+1).getAnzahlStimmen()){
               songs.remove(i+1);
               songs.add(i, songs.get(i+1));
               getauscht = true;
