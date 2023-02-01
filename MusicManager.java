@@ -31,7 +31,8 @@ public class MusicManager {
     }
 
     public Song sucheSong(int nr){
-        return ;
+        Song s1 = new Song("",20,"");
+        return  s1;
     }
 
     public boolean abstimmen(Song song){
