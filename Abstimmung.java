@@ -1,6 +1,8 @@
 import java.util.*;
 public class Abstimmung {
 
+    Scanner sc = new Scanner(System.in);
+
     private String beziehung;
     private int abstimmdauer;
     private int spieldauer;
@@ -25,13 +27,17 @@ public class Abstimmung {
 
 
     public Playlist generierePlaylist(){
-        Playlist p1;
-        p1 = new Playlist();
-        return ;
+        String bezeichnung = "";
+            bezeichnung = sc.next();
+        Playlist p1 = new Playlist(bezeichnung);
+
+
+        return p1;
+
     }
 
     public boolean istAktiv(){
-        return ture;
+        return true;
     }
 
     public String getBeziehung() {
