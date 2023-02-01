@@ -4,6 +4,7 @@ public class MusicManager {
 
     private ArrayList<Playlist> playlists;
     private Abstimmung abstimmung;
+    private ArrayList<Song> alleSongs;
 
     public MusicManager(){
         playlists = new ArrayList<Playlist>();
