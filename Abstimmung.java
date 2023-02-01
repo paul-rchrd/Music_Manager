@@ -1,7 +1,13 @@
 import java.util.*;
 public class Abstimmung {
 
+
     private String bezeichnung;
+
+    Scanner sc = new Scanner(System.in);
+
+    private String beziehung;
+
     private int abstimmdauer;
     private int spieldauer;
     private Date startzeit;
