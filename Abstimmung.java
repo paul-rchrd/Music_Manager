@@ -31,7 +31,7 @@ public class Abstimmung {
     }
 
     public boolean istAktiv(){
-        return ture;
+        return true;
     }
 
     public String getBeziehung() {
