@@ -42,5 +42,8 @@ public int getSpieldauer(){
 public String getInterpret(){
     return interpret;
 }
+public int compareTo() {
+    return 0;
+}
 
 }
