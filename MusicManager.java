@@ -4,6 +4,7 @@ public class MusicManager {
 
     private ArrayList<Playlist> playlists;
     private Abstimmung abstimmung;
+    private ArrayList<Song> alleSongs;
 
     public MusicManager(){
         playlists = new ArrayList<Playlist>();
@@ -30,7 +31,8 @@ public class MusicManager {
     }
 
     public Song sucheSong(int nr){
-        return ;
+        Song s1 = new Song("",20,"");
+        return  s1;
     }
 
     public boolean abstimmen(Song song){
