@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -78,7 +79,7 @@ private Scanner sc = new Scanner(System.in);
     }
 
     public boolean hinzufuegenSongsZurAbstimmung(){
-
+    
         return true;
     }
 
@@ -107,6 +108,6 @@ private Scanner sc = new Scanner(System.in);
         MusicManager m = new MusicManager();
         m.datenbankNutzen();
 // m.einstellenSong(2, 3, "Test", 4, "Name", 6);
-m.erzeugeAbstimmung("TestAbstimmung", 3, 30, 12-12-2003, 2, 1, 3);
+m.erzeugeAbstimmung("TestAbstimmung", 3, 30, 10-10-2020, 2, 1, 3);
     }
 }
