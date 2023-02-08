@@ -3,23 +3,68 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
 public class MusicManager {
 
     private ArrayList<Playlist> playlists;
     private Abstimmung abstimmung;
     private ArrayList<Song> alleSongs;
-    private Connection conn;
+    Connection conn;
     private dataBase db;
 private Scanner sc = new Scanner(System.in);
     public MusicManager(){
         playlists = new ArrayList<Playlist>();
+        try {
+            String url = "jdbc:mysql://localhost:3306/";
+            String user = "root";
+            String pw = "admin";
+
+            conn = DriverManager.getConnection(url, user, "");
+            System.out.println("Inside");
+
+
+        } catch (SQLException ex) {
+            System.out.println("Outside");
+            System.out.println("SQLException: " + ex.getMessage());
+            System.out.println("SQLState: " + ex.getSQLState());
+            System.out.println("VendorError: " + ex.getErrorCode());
+        }
+    }
+    public void datenbankErstellen() throws SQLException {
+
+        Statement stm = conn.createStatement();
+
+        try {
+            stm.executeUpdate("CREATE DATABASE IF NOT EXISTS music_manager");
+            stm.executeUpdate("use music_manager");
+            stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+            stm.executeUpdate("CREATE TABLE `playlist` (`bezeichnung` varchar(1000) NOT NULL, `pid` int(255) NOT NULL,`songid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+            stm.executeUpdate("CREATE TABLE `song` (`autowert` int(255) NOT NULL, `songnr` int(255) NOT NULL, `titel` varchar(1000) NOT NULL, `spieldauer` int(255) NOT NULL, `interpret` varchar(1000) NOT NULL, `anzahlStimmen` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+
+            stm.executeUpdate("ALTER TABLE `abstimmung` ADD PRIMARY KEY (`aid`), ADD KEY `pid` (`pid`), ADD KEY `sid` (`sid`);");
+            stm.executeUpdate("ALTER TABLE `playlist` ADD PRIMARY KEY (`pid`), ADD KEY `songid` (`songid`);");
+            stm.executeUpdate("ALTER TABLE `song` ADD PRIMARY KEY (`autowert`);");
+
+
+
+        } catch (SQLException e) {
+            System.out.print(e);
+        }
+    }
+    public void datenbankNutzen() throws SQLException{
+        Statement stm = conn.createStatement();
+        stm.executeUpdate("use music_manager");
     }
 
-    public boolean einstellenSong(){
-    public boolean erzeugeAbstimmung(String bez, int ad, int sd ) throws SQLException{
+    public boolean einstellenSong(int autowert, int songnr, String titel, int spieldauer, String interpret, int anzahlStimmen ) throws SQLException{
         Statement stm = conn.createStatement();
-        String einfügen = "INSERT INTO Song(autowert, songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES( '"+bez+"','"+ad+"','"+sd+"');";
+        String einfügen = "INSERT INTO Song(autowert, songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES( '"+autowert+"','"+songnr+"','"+titel+"','"+spieldauer+"','"+interpret+"','"+anzahlStimmen+"');";
     stm.executeUpdate(einfügen);
+    System.out.println("Objekt erzeugt");
          return true;   
     }
     public boolean erzeugeAbstimmung(String bez, int ad, int sd ) throws SQLException{
@@ -53,5 +98,12 @@ private Scanner sc = new Scanner(System.in);
 
     public String holePlaylist(String beziehung){
         return "";
+    }
+    public static void main(String []args) throws SQLException{
+        
+        MusicManager m = new MusicManager();
+        m.datenbankNutzen();
+m.einstellenSong(1, 2, "Geil", 3, "Peter", 4);
+
     }
 }
