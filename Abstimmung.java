@@ -1,4 +1,5 @@
 import java.util.*;
+import java.sql.*;
 public class Abstimmung {
 
 
@@ -7,7 +8,6 @@ public class Abstimmung {
     Scanner sc = new Scanner(System.in);
 
     private String beziehung;
-
     private int abstimmdauer;
     private int spieldauer;
     private Date startzeit;
@@ -31,9 +31,10 @@ public class Abstimmung {
 
 
     public Playlist generierePlaylist(){
-        Playlist p1;
-        p1 = new Playlist(bezeichnung);
-        return p1;
+        Statement statement = connection.createStatement();
+       String sql = "INSERT INTO Song(autowert, songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES (?,?,?,?,?,?)";
+       ResultSet result = statement.executeQuery(sql);
+
     }
 
     public boolean istAktiv(){
