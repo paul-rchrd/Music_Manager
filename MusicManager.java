@@ -1,6 +1,8 @@
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.sql.*;
@@ -67,10 +69,11 @@ private Scanner sc = new Scanner(System.in);
     System.out.println("Objekt erzeugt");
          return true;   
     }
-    public boolean erzeugeAbstimmung(String bez, int ad, int sd ) throws SQLException{
+    public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauer, Date startzeit, int aid, int sid, int pid ) throws SQLException{
     Statement stm = conn.createStatement();
-    String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer) VALUES( '"+bez+"','"+ad+"','"+sd+"');";
+    String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauer+"', '"+startzeit+"','"+aid+"','"+sid+"' '"+pid+"');";
     stm.executeUpdate(einfügen);
+    System.out.println("Abstimmung erzeugt");
         return true;
     }
 
@@ -103,7 +106,7 @@ private Scanner sc = new Scanner(System.in);
         
         MusicManager m = new MusicManager();
         m.datenbankNutzen();
-m.einstellenSong(1, 2, "Geil", 3, "Peter", 4);
-
+// m.einstellenSong(2, 3, "Test", 4, "Name", 6);
+m.erzeugeAbstimmung("TestAbstimmung", 3, 30, 12-12-2003, 2, 1, 3);
     }
 }
