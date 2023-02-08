@@ -58,7 +58,7 @@ public class dataBase {
 
         public void datenbankNutzen() throws SQLException{
             Statement stm = conn.createStatement();
-            stm.executeUpdate("use kleiderschrank");
+            stm.executeUpdate("use music_manager");
         }
 
 /*
