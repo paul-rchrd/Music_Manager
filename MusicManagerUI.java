@@ -8,7 +8,9 @@ public class MusicManagerUI {
     public static void main(String[] args) throws Exception{
         Scanner sc = new Scanner(System.in);
         MusicManager m = new MusicManager();
+        Abstimmung a = new Abstimmung("test", 2, 3);
         m.datenbankNutzen();
+        a.datenbankNutzen();
         int auswahl = 0;
 
         System.out.println("Bitte eine Aktion auswählen: ");
@@ -40,9 +42,12 @@ public class MusicManagerUI {
 
 
 
-                m.einstellenSong(0,songNr,titel,spieldauer,interpret,0);
+                
+               // m.einstellenSong(0,songNr,titel,spieldauer,interpret,0);
+                a.hinzufuegen(0, songNr, titel, spieldauer, interpret, 0);
                 System.out.println("Song eingestellt");
                 break;
+
 
             case 2:
                 //erzeugen Abstimmung

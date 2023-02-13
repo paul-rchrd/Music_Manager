@@ -56,7 +56,7 @@ CREATE TABLE `playlist` (
 --
 
 CREATE TABLE `song` (
-  `autowert` int(255) NOT NULL,
+  `autowert` int(255) NOT NULL AUTO_INCREMENT,
   `songnr` int(255) NOT NULL,
   `titel` varchar(1000) NOT NULL,
   `spieldauer` int(255) NOT NULL,

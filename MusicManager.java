@@ -67,7 +67,7 @@ private Scanner sc = new Scanner(System.in);
         Statement stm = conn.createStatement();
         String einfügen = "INSERT INTO Song(autowert, songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES( '"+autowert+"','"+songnr+"','"+titel+"','"+spieldauer+"','"+interpret+"','"+anzahlStimmen+"');";
     stm.executeUpdate(einfügen);
-    System.out.println("Objekt erzeugt");
+    //System.out.println("Objekt erzeugt");
          return true;   
     }
     public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauer, Date startzeit, int aid, int sid, int pid ) throws SQLException{
@@ -89,6 +89,7 @@ private Scanner sc = new Scanner(System.in);
     }
 
     public String holeSongsDerAbstimmung(){
+    
         return "";
     }
 
