@@ -45,5 +45,7 @@ public String getInterpret(){
 public int compareTo() {
     return 0;
 }
-
+public int getAutowert(){
+    return autowert;
+}
 }
