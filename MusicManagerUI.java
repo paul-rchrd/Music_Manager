@@ -31,8 +31,8 @@ public class MusicManagerUI {
         switch (auswahl){
             case 1 :
                 //einstellen songs
-                System.out.println("Bitte Song Nummer angeben: ");
-                int songNr = Integer.parseInt(sc.nextLine());
+                //System.out.println("Bitte Song Nummer angeben: ");
+                //int songNr = Integer.parseInt(sc.nextLine());
                 System.out.println("Bitte Titel angeben: ");
                 String titel = sc.nextLine();
                 System.out.println("Bitte die Spieldauer angeben (gerundet auf Minuten): ");
@@ -44,7 +44,7 @@ public class MusicManagerUI {
 
                 
                // m.einstellenSong(0,songNr,titel,spieldauer,interpret,0);
-                a.hinzufuegen(0, songNr, titel, spieldauer, interpret, 0);
+               a.hinzufuegen(titel, spieldauer, interpret, 0);
                 System.out.println("Song eingestellt");
                 break;
 

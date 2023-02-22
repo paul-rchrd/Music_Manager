@@ -43,11 +43,11 @@ public class dataBase {
                 stm.executeUpdate("use music_manager");
                 stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
                 stm.executeUpdate("CREATE TABLE `playlist` (`bezeichnung` varchar(1000) NOT NULL, `pid` int(255) NOT NULL,`songid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
-                stm.executeUpdate("CREATE TABLE `song` (`autowert` int(255) NOT NULL, `songnr` int(255) NOT NULL, `titel` varchar(1000) NOT NULL, `spieldauer` int(255) NOT NULL, `interpret` varchar(1000) NOT NULL, `anzahlStimmen` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+                stm.executeUpdate("CREATE TABLE `song` (`songnr` int(255) NOT NULL AUTO_INCREMENT, `titel` varchar(1000) NOT NULL, `spieldauer` int(255) NOT NULL, `interpret` varchar(1000) NOT NULL, `anzahlStimmen` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
                 stm.executeUpdate("ALTER TABLE `abstimmung` ADD PRIMARY KEY (`aid`), ADD KEY `pid` (`pid`), ADD KEY `sid` (`sid`);");
                 stm.executeUpdate("ALTER TABLE `playlist` ADD PRIMARY KEY (`pid`), ADD KEY `songid` (`songid`);");
-                stm.executeUpdate("ALTER TABLE `song` ADD PRIMARY KEY (`autowert`);");
+                stm.executeUpdate("ALTER TABLE `song` ADD PRIMARY KEY (`songnr`);");
 
 
 
