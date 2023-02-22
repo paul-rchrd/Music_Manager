@@ -4,8 +4,8 @@ import java.util.*;
     // Erstellt die Klasse
 public class Song{
     // Attribute
-private static int autowert = 0;
-private int songNr;
+private static int songNr = 0;
+private int autowert;
 private String titel;
 private int spieldauer;
 private String interpret;
@@ -15,8 +15,8 @@ public Song(String titel, int sd, String interpret){
     this.spieldauer = sd;
 this.titel = titel;
 this.interpret = interpret;
-    songNr = autowert+1;
-    autowert++;
+    autowert = songNr+1;
+    songNr++;
 }
     //Methode um die Stimmen zu zählen
 public void zaehleStimme(){
