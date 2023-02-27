@@ -10,13 +10,13 @@ public class Abstimmung {
 
     private String beziehung;
     private int abstimmdauer;
-    private int spieldauer;
+    private int spieldauerp;
     private DateTimeAtCreation startzeit;
     Connection conn;
     private ArrayList<Song> songs = new ArrayList<Song>();
 
     public Abstimmung(String bez, int ad, int sd){
-        this.spieldauer = sd;
+        this.spieldauerp = sd;
         this.abstimmdauer = ad;
         this.bezeichnung = bez;
         try {
