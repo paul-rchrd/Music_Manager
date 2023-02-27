@@ -50,7 +50,16 @@ public class MusicManagerUI {
 
 
             case 2:
-                //erzeugen Abstimmung
+             //erzeugen Abstimmung
+            System.out.println("Bitte Bezeichnung angeben");
+            String bezeichnung = sc.nextLine();
+               System.out.println("Bitte Abstimmdauer angeben:");
+               int abstimmdauer = Integer.parseInt(sc.nextLine());
+               System.out.println("Bitte Spieldauer der Playlist angeben");
+                int spieldauerp = Integer.parseInt(sc.nextLine());
+               System.out.println("Bitte Startzeit der Abstimmung angeben");
+                Date startzeit = sc.nextLine();
+
                 break;
             case 3:
                 //hinzufuegen Song zur Abstimmung

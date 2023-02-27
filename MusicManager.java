@@ -70,9 +70,9 @@ private Scanner sc = new Scanner(System.in);
     //System.out.println("Objekt erzeugt");
          return true;   
     }
-    public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauer, Date startzeit, int aid, int sid, int pid ) throws SQLException{
+    public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauerp, Date startzeit, int aid, int sid, int pid ) throws SQLException{
     Statement stm = conn.createStatement();
-    String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauer+"', '"+startzeit+"','"+aid+"','"+sid+"' '"+pid+"');";
+    String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauerp+"', '"+startzeit+"','"+aid+"','"+sid+"' '"+pid+"');";
     stm.executeUpdate(einfügen);
     System.out.println("Abstimmung erzeugt");
         return true;
