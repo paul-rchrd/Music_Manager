@@ -41,28 +41,27 @@ public class MusicManagerUI {
                 String interpret = sc.nextLine();
 
 
+               m.einstellenSong( titel,spieldauer,interpret,0);
 
-                
-               // m.einstellenSong(0,songNr,titel,spieldauer,interpret,0);
-               a.hinzufuegen(titel, spieldauer, interpret, 0);
                 System.out.println("Song eingestellt");
                 break;
 
 
             case 2:
              //erzeugen Abstimmung
-            System.out.println("Bitte Bezeichnung angeben");
-            String bezeichnung = sc.nextLine();
+
                System.out.println("Bitte Abstimmdauer angeben:");
                int abstimmdauer = Integer.parseInt(sc.nextLine());
                System.out.println("Bitte Spieldauer der Playlist angeben");
                 int spieldauerp = Integer.parseInt(sc.nextLine());
                System.out.println("Bitte Startzeit der Abstimmung angeben");
-                Date startzeit = sc.nextLine();
+
+               m.erzeugeAbstimmung("Abstimmung", abstimmdauer, spieldauerp, ,1, null,null);
 
                 break;
             case 3:
                 //hinzufuegen Song zur Abstimmung
+
                 break;
             case 4:
                 //starte Abstimmung
