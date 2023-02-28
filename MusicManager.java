@@ -86,7 +86,7 @@ private Scanner sc = new Scanner(System.in);
     }
 
     public boolean hinzufuegenSongsZurAbstimmung(){
-        
+
         return true;
     }
 
