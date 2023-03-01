@@ -1,40 +1,91 @@
-/**
-  *
-  * Beschreibung
-  *
-  * @version 1.0 vom 31.01.2018
-  * @author 
-  */
-import java.util.*;
-import java.text.DateFormat;
-public class DateTime {
-  // Anfang Attribute
-  private Calendar cal;
-  // Ende Attribute
-  
-  public DateTime(){
-    this.cal = Calendar.getInstance();
-  }
-  public DateTime(String date, String time){
-    this();
-    int year, month, day, hour, minute; 
-    String [] dates = date.split("."); 
-    String [] times = time.split(".");
-    year=Integer.parseInt(dates[2]);
-    month=Integer.parseInt(dates[1]);
-    day=Integer.parseInt(dates[0]);
-    minute=Integer.parseInt(dates[1]);
-    hour=Integer.parseInt(dates[0]);
-    cal.set(year, month, day, hour, minute);
-  }
-  // Anfang Methoden
-  public long getIntMillis() {
-    return this.cal.getTimeInMillis();
-  }
-  public String toString(){
-    DateFormat meinDatumFormat = DateFormat.getDateInstance(DateFormat.MEDIUM);
-    return meinDatumFormat.format(cal.getTime());
-  }
+import java.util.Calendar;
 
-  // Ende Methoden
+public class DateTime {
+    private int day;
+    private int month;
+    private int year;
+    private int hour;
+    private int minute;
+    private int second;
+
+    public DateTime() {
+        Calendar c = Calendar.getInstance();
+        this.day = c.get(Calendar.DAY_OF_MONTH);
+        this.month = c.get(Calendar.MONTH);
+        this.year = c.get(Calendar.YEAR);
+        this.hour = c.get(Calendar.HOUR_OF_DAY);
+        this.minute = c.get(Calendar.MINUTE);
+        this.second = c.get(Calendar.SECOND);
+    }
+
+    public boolean equals(DateTime other) {
+        return this.day == other.day && this.month == other.month && this.year == other.year &&
+            this.hour == other.hour && this.minute == other.minute && this.second == other.second;
+    }
+
+    public boolean isBefore(DateTime other) {
+        if (this.year < other.year) {
+            return true;
+        }
+        if (this.year == other.year && this.month < other.month) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day < other.day) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour < other.hour) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour == other.hour && this.minute < other.minute) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour == other.hour && this.minute == other.minute && this.second < other.second) {
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAfter(DateTime other) {
+        if (this.year > other.year) {
+            return true;
+        }
+        if (this.year == other.year && this.month > other.month) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day > other.day) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour > other.hour) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour == other.hour && this.minute > other.minute) {
+            return true;
+        }
+        if (this.year == other.year && this.month == other.month && this.day == other.day &&
+            this.hour == other.hour && this.minute == other.minute && this.second > other.second) {
+            return true;
+        }
+        return false;
+    }
+
+    public DateTime plusMinutes(long minutes) {
+        DateTime copy = new DateTime();
+        copy.day = this.day;
+        copy.month = this.month;
+        copy.year = this.year;
+        copy.hour = this.hour;
+        copy.minute = this.minute + (int)minutes;
+        copy.second = this.second;
+
+        return copy;
+    }
+
+    public String toString() {
+        return String.format("%02d.%02d.%04d %02d:%02d:%02d", day, month, year, hour, minute, second);
+    }
 }
