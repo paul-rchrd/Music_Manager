@@ -78,7 +78,7 @@ public class Abstimmung {
     public Playlist generierePlaylist() throws SQLException{
     sortiereSongs();
         Statement statement = conn.createStatement();
-       String sql = "INSERT INTO Song(autowert, songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES (?,?,?,?,?,?)";
+       String sql = "INSERT INTO Song(songnr, titel, spieldauer, interpret, anzahlStimmen) VALUES (?,?,?,?,?,?)";
        ResultSet result = statement.executeQuery(sql);
 return null;
     }
@@ -113,7 +113,7 @@ return null;
     }
 
     public int getSpieldauer() {
-        return spieldauer;
+        return 0;
     }
 
     public DateTimeAtCreation getStartzeit() {

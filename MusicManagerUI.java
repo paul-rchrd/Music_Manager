@@ -1,4 +1,5 @@
 import java.io.InterruptedIOException;
+import java.sql.ResultSet;
 import java.util.*;
 
 
@@ -15,7 +16,7 @@ public class MusicManagerUI {
 
         System.out.println("Bitte eine Aktion auswählen: ");
         System.out.println(" ");
-        System.out.println("1  Song einstellen");
+        System.out.println("1  Song zur Abstimmung hinzufügen");
         System.out.println("2  Abstimmung erzeugen");
         System.out.println("3  Song zur Abstimmung hinzufügen");
         System.out.println("4  Abstimmung starten");
@@ -30,7 +31,7 @@ public class MusicManagerUI {
 
         switch (auswahl){
             case 1 :
-                //einstellen songs
+                //hinzufuegen SOng zur Abstimmung
                 //System.out.println("Bitte Song Nummer angeben: ");
                 //int songNr = Integer.parseInt(sc.nextLine());
                 System.out.println("Bitte Titel angeben: ");
@@ -50,32 +51,32 @@ public class MusicManagerUI {
             case 2:
              //erzeugen Abstimmung
 
+                System.out.println("Bitte Bezeichnung angeben:");
+                String bezeichnung = sc.nextLine();
+
                System.out.println("Bitte Abstimmdauer angeben:");
                int abstimmdauer = Integer.parseInt(sc.nextLine());
+
                System.out.println("Bitte Spieldauer der Playlist angeben");
                 int spieldauerp = Integer.parseInt(sc.nextLine());
-               System.out.println("Bitte Startzeit der Abstimmung angeben");
 
-               m.erzeugeAbstimmung("Abstimmung", abstimmdauer, spieldauerp, ,1, null,null);
+               m.erzeugeAbstimmung(bezeichnung, abstimmdauer, spieldauerp, null ,1, 0,0);
 
                 break;
+
             case 3:
-                //hinzufuegen Song zur Abstimmung
-
-                break;
-            case 4:
                 //starte Abstimmung
                 break;
-            case 5:
+            case 4:
                 //hole Songs der Abstimmung
                 break;
-            case 6:
+            case 5:
                 //suche Song
                 break;
-            case 7:
+            case 6:
                 //abstimmen
                 break;
-            case 8:
+            case 7:
                 //hole Playlist
                 break;
 

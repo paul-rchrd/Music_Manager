@@ -63,9 +63,14 @@ private Scanner sc = new Scanner(System.in);
         stm.executeUpdate("use music_manager");
     }
 
-    public boolean einstellenSong(String titel, int spieldauer, String interpret, int anzahlStimmen ) throws SQLException{
+    public boolean einstellenSong(String titel, int spieldauer, String interpret, int anzahlStimmen) throws SQLException{
         Statement stm = conn.createStatement();
-        String einfügen = "INSERT INTO Song(titel, spieldauer, interpret, anzahlStimmen) VALUES('"+titel+"','"+spieldauer+"','"+interpret+"','"+anzahlStimmen+"');";
+        ResultSet rs = stm.executeQuery("SELECT bezeichnung FROM abstimmung WHERE aid = 1");
+        if(!rs.next()){
+            System.out.println("Keine Abstimmung vorhanden");
+            return false;
+        }
+        String einfügen = "INSERT INTO Song(titel, spieldauer, interpret, anzahlStimmen, aid) VALUES('"+titel+"','"+spieldauer+"','"+interpret+"',null,1);";
         stm.executeUpdate(einfügen);
         System.out.println("Song eingestellt");
         return true;
@@ -73,15 +78,16 @@ private Scanner sc = new Scanner(System.in);
     public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauerp, Date startzeit, int aid, int sid, int pid ) throws SQLException{
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT bezeichnung FROM abstimmung WHERE aid = 1");
-        if(rs == null){
-            String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauerp+"', '"+startzeit+"','"+aid+"','"+sid+"' '"+pid+"');";
+        if(!rs.next()){
+            String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauerp+"', null ,1,null ,null);";
             stm.executeUpdate(einfügen);
             Abstimmung abstimmung = new Abstimmung(bezeichnung, aid, sid);
             System.out.println("Abstimmung erzeugt");
             return true;
+        }else {
+            System.out.println("Es ist schon eine Abstimmung vorhanden");
+            return false;
         }
-        System.out.println("Es ist schon eine Abstimmung vorhanden");
-        return false;
 
     }
 
@@ -115,7 +121,7 @@ private Scanner sc = new Scanner(System.in);
         
         MusicManager m = new MusicManager();
         m.datenbankNutzen();
-// m.einstellenSong(2, 3, "Test", 4, "Name", 6);
-m.erzeugeAbstimmung("TestAbstimmung", 3, 30, 10-10-2020, 2, 1, 3);
+
+
     }
 }

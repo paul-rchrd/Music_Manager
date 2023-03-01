@@ -56,8 +56,7 @@ CREATE TABLE `playlist` (
 --
 
 CREATE TABLE `song` (
-  `autowert` int(255) NOT NULL,
-  `songnr` int(255) NOT NULL,
+  `songnr` int(255) NOT NULL AUTO_INCREMENT,
   `titel` varchar(1000) NOT NULL,
   `spieldauer` int(255) NOT NULL,
   `interpret` varchar(1000) NOT NULL,
@@ -87,7 +86,7 @@ ALTER TABLE `playlist`
 -- Indizes für die Tabelle `song`
 --
 ALTER TABLE `song`
-  ADD PRIMARY KEY (`autowert`);
+  ADD PRIMARY KEY (`songnr`);
 
 --
 -- Constraints der exportierten Tabellen
@@ -98,13 +97,13 @@ ALTER TABLE `song`
 --
 ALTER TABLE `abstimmung`
   ADD CONSTRAINT `pid` FOREIGN KEY (`pid`) REFERENCES `playlist` (`pid`),
-  ADD CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `song` (`autowert`);
+  ADD CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `song` (`songnr`);
 
 --
 -- Constraints der Tabelle `playlist`
 --
 ALTER TABLE `playlist`
-  ADD CONSTRAINT `songid` FOREIGN KEY (`songid`) REFERENCES `song` (`autowert`);
+  ADD CONSTRAINT `songid` FOREIGN KEY (`songid`) REFERENCES `song` (`songnr`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
