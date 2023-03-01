@@ -32,7 +32,7 @@ CREATE TABLE `abstimmung` (
   `abstimmdauer` int(255) NOT NULL,
   `spieldauer` int(255) NOT NULL,
   `startzeit` datetime(6) NOT NULL,
-  `aid` int(255) NOT NULL,
+  `aid` int(255) NOT NULL AUTO_INCREMENT,
   `sid` int(255) NOT NULL,
   `pid` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

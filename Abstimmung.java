@@ -42,7 +42,7 @@ public class Abstimmung {
             try {
                 stm.executeUpdate("CREATE DATABASE IF NOT EXISTS music_manager");
                 stm.executeUpdate("use music_manager");
-                stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+                stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL AUTO_INCREMENT, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
                 stm.executeUpdate("CREATE TABLE `playlist` (`bezeichnung` varchar(1000) NOT NULL, `pid` int(255) NOT NULL,`songid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
                 stm.executeUpdate("CREATE TABLE `song` (`songnr` int(255) NOT NULL AUTO_INCREMENT, `titel` varchar(1000) NOT NULL, `spieldauer` int(255) NOT NULL, `interpret` varchar(1000) NOT NULL, `anzahlStimmen` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
     

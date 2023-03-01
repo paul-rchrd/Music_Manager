@@ -44,7 +44,7 @@ private Scanner sc = new Scanner(System.in);
         try {
             stm.executeUpdate("CREATE DATABASE IF NOT EXISTS music_manager");
             stm.executeUpdate("use music_manager");
-            stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
+            stm.executeUpdate("CREATE TABLE `abstimmung` (`bezeichnung` varchar(1000) NOT NULL, `abstimmdauer` int(255) NOT NULL, `spieldauer` int(255) NOT NULL, `startzeit` datetime(6) NOT NULL, `aid` int(255) NOT NULL AUTO_INCREMENT, `sid` int(255) NOT NULL, `pid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
             stm.executeUpdate("CREATE TABLE `playlist` (`bezeichnung` varchar(1000) NOT NULL, `pid` int(255) NOT NULL,`songid` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
             stm.executeUpdate("CREATE TABLE `song` ()`songnr` int(255) NOT NULL AUTO_INCREMENT, `titel` varchar(1000) NOT NULL, `spieldauer` int(255) NOT NULL, `interpret` varchar(1000) NOT NULL, `anzahlStimmen` int(255) NOT NULL) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;");
 
@@ -70,11 +70,11 @@ private Scanner sc = new Scanner(System.in);
         System.out.println("Song eingestellt");
         return true;
     }
-    public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauerp, Date startzeit, int aid, int sid, int pid ) throws SQLException{
+    public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauerp,  int aid, int sid, int pid ) throws SQLException{
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT bezeichnung FROM abstimmung WHERE aid = 1");
         if(rs == null){
-            String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, startzeit, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauerp+"', '"+startzeit+"','"+aid+"','"+sid+"' '"+pid+"');";
+            String einfügen = "INSERT INTO Abstimmung(bezeichnung, abstimmdauer, spieldauer, aid, sid, pid) VALUES( '"+bezeichnung+"','"+abstimmdauer+"','"+spieldauerp+"','"+aid+"','"+sid+"' '"+pid+"');";
             stm.executeUpdate(einfügen);
             Abstimmung abstimmung = new Abstimmung(bezeichnung, aid, sid);
             System.out.println("Abstimmung erzeugt");
