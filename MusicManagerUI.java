@@ -15,6 +15,7 @@ public class MusicManagerUI {
     public void menue() throws Exception{
         Scanner sc = new Scanner(System.in);
         MusicManager m = new MusicManager();
+        m.datenbankErstellen();
         Abstimmung a = new Abstimmung("test", 2, 3);
         m.datenbankNutzen();
         a.datenbankNutzen();
