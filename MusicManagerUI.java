@@ -7,6 +7,12 @@ public class MusicManagerUI {
 
 
     public static void main(String[] args) throws Exception{
+
+        MusicManagerUI mui1 = new MusicManagerUI();
+        mui1.menue();
+    }
+
+    public void menue() throws Exception{
         Scanner sc = new Scanner(System.in);
         MusicManager m = new MusicManager();
         Abstimmung a = new Abstimmung("test", 2, 3);
@@ -18,12 +24,11 @@ public class MusicManagerUI {
         System.out.println(" ");
         System.out.println("1  Song zur Abstimmung hinzufügen");
         System.out.println("2  Abstimmung erzeugen");
-        System.out.println("3  Song zur Abstimmung hinzufügen");
-        System.out.println("4  Abstimmung starten");
-        System.out.println("5  Songs aus Abstimmung holen");
-        System.out.println("6  Song suchen");
-        System.out.println("7  Abstimmen");
-        System.out.println("8  Playlist holen");
+        System.out.println("3  Abstimmung starten");
+        System.out.println("4  Songs aus Abstimmung holen");
+        System.out.println("5  Song suchen");
+        System.out.println("6  Abstimmen");
+        System.out.println("7  Playlist holen");
         System.out.println(" ");
         System.out.println("Ihre Auswahl: ");
 
@@ -36,53 +41,50 @@ public class MusicManagerUI {
                 //int songNr = Integer.parseInt(sc.nextLine());
                 System.out.println("Bitte Titel angeben: ");
                 String titel = sc.nextLine();
-                System.out.println("Bitte die Spieldauer angeben (gerundet auf Minuten): ");
+                System.out.println("Bitte die Spieldauer des Songs angeben (gerundet auf Minuten): ");
                 int spieldauer = Integer.parseInt(sc.nextLine());
                 System.out.println("Bitte den Interpreten angeben: ");
                 String interpret = sc.nextLine();
 
 
-               m.einstellenSong( titel,spieldauer,interpret,0);
+                m.einstellenSong( titel,spieldauer,interpret,0);
 
                 System.out.println("Song eingestellt");
-                break;
+                menue();
 
 
             case 2:
-             //erzeugen Abstimmung
+                //erzeugen Abstimmung
 
-                System.out.println("Bitte Bezeichnung angeben:");
+                System.out.println("Bitte Bezeichnung angeben (in Min): ");
                 String bezeichnung = sc.nextLine();
 
-               System.out.println("Bitte Abstimmdauer angeben:");
-               int abstimmdauer = Integer.parseInt(sc.nextLine());
+                System.out.println("Bitte Abstimmdauer angeben (in Min): ");
+                int abstimmdauer = Integer.parseInt(sc.nextLine());
 
-               System.out.println("Bitte Spieldauer der Playlist angeben");
+                System.out.println("Bitte Spieldauer der Playlist angeben (in Min): ");
                 int spieldauerp = Integer.parseInt(sc.nextLine());
 
-               m.erzeugeAbstimmung(bezeichnung, abstimmdauer, spieldauerp, null ,1, 0,0);
+                m.erzeugeAbstimmung(bezeichnung, abstimmdauer, spieldauerp, null ,1, 0,0);
 
-                break;
+                menue();
 
             case 3:
                 //starte Abstimmung
-                break;
+                menue();
             case 4:
                 //hole Songs der Abstimmung
-                break;
+                menue();
             case 5:
                 //suche Song
-                break;
+                menue();
             case 6:
                 //abstimmen
-                break;
+                menue();
             case 7:
                 //hole Playlist
-                break;
+                menue();
 
         }
-
-
-
     }
 }

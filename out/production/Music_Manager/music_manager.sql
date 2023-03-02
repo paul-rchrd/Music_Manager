@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Erstellungszeit: 01. Feb 2023 um 09:54
--- Server-Version: 10.4.22-MariaDB
--- PHP-Version: 8.1.2
+-- Host: localhost
+-- Erstellungszeit: 01. Mrz 2023 um 11:15
+-- Server-Version: 10.4.21-MariaDB
+-- PHP-Version: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -31,11 +31,17 @@ CREATE TABLE `abstimmung` (
   `bezeichnung` varchar(1000) NOT NULL,
   `abstimmdauer` int(255) NOT NULL,
   `spieldauer` int(255) NOT NULL,
-  `startzeit` datetime(6) NOT NULL,
+  `startzeit` datetime(6) DEFAULT NULL,
   `aid` int(255) NOT NULL,
-  `sid` int(255) NOT NULL,
-  `pid` int(255) NOT NULL
+  `pid` int(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `abstimmung`
+--
+
+INSERT INTO `abstimmung` (`bezeichnung`, `abstimmdauer`, `spieldauer`, `startzeit`, `aid`, `pid`) VALUES
+('we', 2, 2, NULL, 1, NULL);
 
 -- --------------------------------------------------------
 
@@ -56,12 +62,20 @@ CREATE TABLE `playlist` (
 --
 
 CREATE TABLE `song` (
-  `songnr` int(255) NOT NULL AUTO_INCREMENT,
+  `songnr` int(255) NOT NULL,
   `titel` varchar(1000) NOT NULL,
   `spieldauer` int(255) NOT NULL,
   `interpret` varchar(1000) NOT NULL,
-  `anzahlStimmen` int(255) NOT NULL
+  `anzahlStimmen` int(255) DEFAULT NULL,
+  `aid` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Daten für Tabelle `song`
+--
+
+INSERT INTO `song` (`songnr`, `titel`, `spieldauer`, `interpret`, `anzahlStimmen`, `aid`) VALUES
+(4, 'Hot', 3, 'Luca', NULL, 1);
 
 --
 -- Indizes der exportierten Tabellen
@@ -72,8 +86,7 @@ CREATE TABLE `song` (
 --
 ALTER TABLE `abstimmung`
   ADD PRIMARY KEY (`aid`),
-  ADD KEY `pid` (`pid`),
-  ADD KEY `sid` (`sid`);
+  ADD KEY `pid` (`pid`);
 
 --
 -- Indizes für die Tabelle `playlist`
@@ -86,24 +99,28 @@ ALTER TABLE `playlist`
 -- Indizes für die Tabelle `song`
 --
 ALTER TABLE `song`
-  ADD PRIMARY KEY (`songnr`);
+  ADD PRIMARY KEY (`songnr`),
+  ADD KEY `aid` (`aid`);
+
+--
+-- AUTO_INCREMENT für exportierte Tabellen
+--
+
+--
+-- AUTO_INCREMENT für Tabelle `song`
+--
+ALTER TABLE `song`
+  MODIFY `songnr` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints der exportierten Tabellen
 --
 
 --
--- Constraints der Tabelle `abstimmung`
+-- Constraints der Tabelle `song`
 --
-ALTER TABLE `abstimmung`
-  ADD CONSTRAINT `pid` FOREIGN KEY (`pid`) REFERENCES `playlist` (`pid`),
-  ADD CONSTRAINT `sid` FOREIGN KEY (`sid`) REFERENCES `song` (`songnr`);
-
---
--- Constraints der Tabelle `playlist`
---
-ALTER TABLE `playlist`
-  ADD CONSTRAINT `songid` FOREIGN KEY (`songid`) REFERENCES `song` (`songnr`);
+ALTER TABLE `song`
+  ADD CONSTRAINT `aid` FOREIGN KEY (`aid`) REFERENCES `abstimmung` (`aid`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
