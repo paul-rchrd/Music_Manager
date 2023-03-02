@@ -17,7 +17,7 @@ public class MusicManager {
     private Abstimmung abstimmung;
     private ArrayList<Song> alleSongs;
     Connection conn;
-    private dataBase db;
+
 private Scanner sc = new Scanner(System.in);
     public MusicManager(){
         playlists = new ArrayList<Playlist>();
