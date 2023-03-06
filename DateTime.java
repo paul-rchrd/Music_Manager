@@ -22,7 +22,6 @@ public class DateTime {
         return this.day == other.day && this.month == other.month && this.year == other.year &&
             this.hour == other.hour && this.minute == other.minute && this.second == other.second;
     }
-
     public boolean isBefore(DateTime other) {
         if (this.year < other.year) {
             return true;

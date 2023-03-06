@@ -57,7 +57,7 @@ public class MusicManagerUI {
             case 2:
                 //erzeugen Abstimmung
 
-                System.out.println("Bitte Bezeichnung angeben (in Min): ");
+                System.out.println("Bitte Bezeichnung angeben: ");
                 String bezeichnung = sc.nextLine();
 
                 System.out.println("Bitte Abstimmdauer angeben (in Min): ");
@@ -72,6 +72,8 @@ public class MusicManagerUI {
 
             case 3:
                 //starte Abstimmung
+            a.starten();
+            
                 menue();
             case 4:
                 //hole Songs der Abstimmung

@@ -1,5 +1,8 @@
 import java.util.*;
 import javax.print.attribute.standard.DateTimeAtCreation;
+
+import org.xml.sax.SAXNotRecognizedException;
+
 import java.sql.*;
 public class Abstimmung {
 
@@ -10,13 +13,13 @@ public class Abstimmung {
 
     private String beziehung;
     private int abstimmdauer;
-    private int spieldauerp;
-    private DateTimeAtCreation startzeit;
+    private int spieldauer;
+    private DateTime startzeit;
     Connection conn;
     private ArrayList<Song> songs = new ArrayList<Song>();
 
     public Abstimmung(String bez, int ad, int sd){
-        this.spieldauerp = sd;
+        this.spieldauer = sd;
         this.abstimmdauer = ad;
         this.bezeichnung = bez;
         try {
@@ -69,8 +72,21 @@ public class Abstimmung {
     System.out.println("Objekt erzeugt");
     }
 
-    public boolean starten(){
-        return true;
+    public boolean starten() throws SQLException{
+        
+    if(startzeit==null){
+
+    DateTime startzeit = new DateTime();
+    DateTime endzeit = new DateTime();
+
+        if(startzeit.isAfter(endzeit)){
+        System.out.println("Abstimmung vorbei");
+        generierePlaylist();
+            return true;
+        }
+    }
+        System.out.println("Die Abstimmung läuft / lief bereits");
+        return false;
     }
 
 
@@ -113,14 +129,14 @@ return null;
     }
 
     public int getSpieldauer() {
-        return 0;
+        return spieldauer;
     }
 
-    public DateTimeAtCreation getStartzeit() {
+    public DateTime getStartzeit() {
         return startzeit;
     }
 
-    public void setStartzeit(DateTimeAtCreation startzeit) {
+    public void setStartzeit(DateTime startzeit) {
         this.startzeit = startzeit;
     }
 }
