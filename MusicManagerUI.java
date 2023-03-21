@@ -51,6 +51,7 @@ public class MusicManagerUI {
                 m.einstellenSong( titel,spieldauer,interpret,0);
 
                 System.out.println("Song eingestellt");
+                
                 menue();
 
 
