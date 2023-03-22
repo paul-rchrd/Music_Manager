@@ -67,13 +67,14 @@ private Scanner sc = new Scanner(System.in);
         Statement stm = conn.createStatement();
         ResultSet rs = stm.executeQuery("SELECT bezeichnung FROM abstimmung WHERE aid = 1");
         if(!rs.next()){
-            System.out.println("Keine Abstimmung vorhanden");
-            return false;
+            String einfügen = "INSERT INTO Song(titel, spieldauer, interpret, anzahlStimmen, aid) VALUES('"+titel+"','"+spieldauer+"','"+interpret+"',null,1);";
+            stm.executeUpdate(einfügen);
+            System.out.println("Song eingestellt");
+            return true;
+            
         }
-        String einfügen = "INSERT INTO Song(titel, spieldauer, interpret, anzahlStimmen, aid) VALUES('"+titel+"','"+spieldauer+"','"+interpret+"',null,1);";
-        stm.executeUpdate(einfügen);
-        System.out.println("Song eingestellt");
-        return true;
+        System.out.println("Keine Abstimmung vorhanden");
+            return false;
     }
     public boolean erzeugeAbstimmung(String bezeichnung, int abstimmdauer, int spieldauerp, Date startzeit, int aid, int sid, int pid ) throws SQLException{
         Statement stm = conn.createStatement();

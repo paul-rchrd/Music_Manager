@@ -49,7 +49,7 @@ public class MusicManagerUI {
 
 
                 m.einstellenSong( titel,spieldauer,interpret,0);
-
+                a.hinzufuegen(titel, spieldauer, interpret, auswahl);
                 System.out.println("Song eingestellt");
                 
                 menue();
